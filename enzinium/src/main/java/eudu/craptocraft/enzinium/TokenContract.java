@@ -12,6 +12,7 @@ public class TokenContract {
     private String symbol = "";
     private double totalSupply = 0d;
     private double tokenPrice = 0d;
+    private double totalTokensSold = 0d;
 
     private Map<PublicKey, Double> balances = new HashMap<>();
 
@@ -120,4 +121,21 @@ public class TokenContract {
 
         }
     }
+
+    public int totalTokensSold() {
+
+        for (Map.Entry<PublicKey, Double> llaves : balances.entrySet()) {
+            if (llaves.getKey() != this.ownerPK) {
+                this.totalTokensSold += llaves.getValue();
+            }
+        }
+
+        /*
+         * (int) para transformar a int.
+         * También se puede usar .intValue(),
+         * pero en mi caso me daba problemas
+         */
+        return (int) this.totalTokensSold;
+    }
+
 }
