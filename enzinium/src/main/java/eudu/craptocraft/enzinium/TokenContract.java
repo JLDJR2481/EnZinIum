@@ -67,9 +67,35 @@ public class TokenContract {
                 + this.totalSupply);
     }
 
-    public void addOwner(PublicKey PK, Double stock) {
+    public void addOwner(PublicKey PK, Double unidades) {
 
-        getBalances().putIfAbsent(PK, stock);
+        getBalances().putIfAbsent(PK, unidades);
+
+    }
+
+    public int numOwners() {
+        return getBalances().size();
+    }
+
+    public Double balanceOf(PublicKey ownerPK) {
+        return this.getBalances().getOrDefault(ownerPK, 0d);
+    }
+
+    public void transfer(PublicKey destinatario, Double unidades) {
+        try {
+            require(balanceOf(ownerPK) >= unidades);
+            this.getBalances().compute(ownerPK, (pk, tokens) -> tokens - unidades);
+            this.getBalances().put(destinatario, balanceOf(destinatario) + unidades);
+
+        } catch (Exception exception) {
+        }
+    }
+
+    private void require(Boolean holds) throws Exception {
+
+        if (!holds) {
+            throw new Exception();
+        }
 
     }
 }
