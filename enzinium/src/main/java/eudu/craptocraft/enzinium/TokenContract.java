@@ -81,12 +81,24 @@ public class TokenContract {
         return this.getBalances().getOrDefault(ownerPK, 0d);
     }
 
+    // No reventa
     public void transfer(PublicKey destinatario, Double unidades) {
         try {
             require(balanceOf(ownerPK) >= unidades);
             this.getBalances().compute(ownerPK, (pk, tokens) -> tokens - unidades);
             this.getBalances().put(destinatario, balanceOf(destinatario) + unidades);
 
+        } catch (Exception exception) {
+        }
+    }
+
+    // Reventa
+    public void transfer(PublicKey destinatario, PublicKey segundoDestinatario, Double unidades) {
+        try {
+            require(balanceOf(destinatario) >= unidades);
+            this.getBalances().put(destinatario, balanceOf(destinatario) - unidades);
+
+            this.getBalances().put(segundoDestinatario, balanceOf(segundoDestinatario) + unidades);
         } catch (Exception exception) {
         }
     }

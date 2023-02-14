@@ -224,27 +224,28 @@ public class App {
         System.out.println("\n" + "Reventa de entradas" + "\n" +
                 "===================");
 
-        // ricknillos.transfer(morty.getPK(), jen.getPK(), 1d);
+        ricknillos.transfer(morty.getPK(), jen.getPK(), 1d);
 
-        // System.out.println("Entradas de Morty: "
-        // + ricknillos.balanceOf(morty.getPK())
-        // + " "
-        // + ricknillos.symbol());
-        // System.out.println("Entradas de Jen: "
-        // + ricknillos.balanceOf(jen.getPK())
-        // + " "
-        // + ricknillos.symbol());
+        System.out.println("Entradas de Morty: "
+                + ricknillos.balanceOf(morty.getPK())
+                + " "
+                + ricknillos.symbol());
+        System.out.println("Entradas de Jen: "
+                + ricknillos.balanceOf(jen.getPK())
+                + " "
+                + ricknillos.symbol());
 
-        // /**
-        // * Llega el dia del concierto y Rick quiere
-        // * controlar el acceso a la sala de conciertos.
-        // * Muestra una lista de compradores con el número de entradas
-        // * que han adquirido (excluyendo a Rick).
-        // *
-        // * owners()
-        // * @return muestra en consola la PublicKey de los compradores
-        // * y el numero de tokens que han adquirido
-        // */
+        /**
+         * Llega el dia del concierto y Rick quiere
+         * controlar el acceso a la sala de conciertos.
+         * Muestra una lista de compradores con el número de entradas
+         * que han adquirido (excluyendo a Rick).
+         *
+         * owners()
+         * 
+         * @return muestra en consola la PublicKey de los compradores
+         *         y el numero de tokens que han adquirido
+         */
 
         // System.out.println("\n" + "Lista de compradores" + "\n" +
         // "====================" );
